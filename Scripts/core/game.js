@@ -1,5 +1,4 @@
-/// <reference path="_reference.ts"/>
-/// <reference path="../objects/plane.ts" />
+/// <reference path="./_reference.ts" />
 // IIFE - Immediately Invoked Function Expression
 (function () {
     // Game Specific Variables
@@ -7,6 +6,8 @@
     var stage;
     // Game Object Variables
     var plane;
+    var ocean;
+    var island;
     function Start() {
         // reference to the canvas element on the index.html
         canvas = document.getElementById("canvas");
@@ -21,11 +22,20 @@
     }
     // called every frame
     function Update() {
+        ocean.Update();
+        island.Update();
         plane.Update();
         stage.update();
     }
     function Game() {
         console.log("Game Started");
+        // add ocean to the stage
+        ocean = new objects.Ocean();
+        stage.addChild(ocean);
+        // add island to the stage
+        island = new objects.Island();
+        stage.addChild(island);
+        // add plane to stage
         plane = new objects.Plane(stage);
         stage.addChild(plane);
     }
