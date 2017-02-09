@@ -7,8 +7,9 @@ var objects;
 (function (objects) {
     var Ocean = (function (_super) {
         __extends(Ocean, _super);
-        function Ocean() {
-            var _this = _super.call(this, "../../Assets/images/ocean.gif") || this;
+        function Ocean(stage) {
+            var _this = _super.call(this, "../../Assets/images/ocean.gif", stage) || this;
+            _this.stage = stage;
             _this.Start();
             return _this;
         }
@@ -29,7 +30,7 @@ var objects;
             this._checkBounds();
         };
         return Ocean;
-    }(createjs.Bitmap));
+    }(objects.GameObject));
     objects.Ocean = Ocean;
 })(objects || (objects = {}));
 //# sourceMappingURL=ocean.js.map

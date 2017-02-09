@@ -38,17 +38,17 @@
     function Game() {
         console.log("Game Started");
         // add ocean to the stage
-        ocean = new objects.Ocean();
+        ocean = new objects.Ocean(stage);
         stage.addChild(ocean);
         // add island to the stage
-        island = new objects.Island();
+        island = new objects.Island(stage);
         stage.addChild(island);
         // add plane to stage
         plane = new objects.Plane(stage);
         stage.addChild(plane);
         // add clouds to stage
         for (var count = 0; count < cloudCount; count++) {
-            clouds[count] = new objects.Cloud();
+            clouds[count] = new objects.Cloud(stage);
             stage.addChild(clouds[count]);
         }
     }

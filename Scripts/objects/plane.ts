@@ -1,31 +1,37 @@
 // MODULE is like a namespace
 module objects {
-  export class Plane extends createjs.Bitmap {
-    stage: createjs.Stage;
 
+  /**
+   * The plane class represents the player's avatar.
+   *
+   * @class Plane
+   */
+  export class Plane extends objects.GameObject {
     // CONSTRUCTOR +++++++++++++++++++++++++=
-    constructor(stage: createjs.Stage) {
-      super("../../Assets/images/plane.png");
 
-      this.stage = stage;
-
+    /**
+     * This constructor requires a reference to the stage object
+     *
+     * @constructor
+     * @param {createjs.Stage} stage
+     */
+    constructor(public stage: createjs.Stage) {
+      super("../../Assets/images/plane.png", stage);
       this.Start();
     }
 
-    private Start():void {
-
-/*
-      this.regX = this.getBounds().width * 0.5;
-      this.regY = this.getBounds().height * 0.5;
-      */
-
-      this.regX = 32.5;
-      this.regY = 32.5;
-
+    /**
+     * This method initializes variables and other class objects
+     *
+     * @method Start
+     * @returns {void}
+     */
+    public Start():void {
+      this._initialize();
       this.y = 430; // plane's fixed vertical position
     }
 
-    private _checkBounds():void {
+    protected _checkBounds():void {
       // clamp the right side
       if(this.x > (640 - (this.getBounds().width * 0.5) )) {
         this.x = (640 - (this.getBounds().width * 0.5));
@@ -36,7 +42,6 @@ module objects {
         this.x = this.getBounds().width * 0.5;
       }
     }
-
 
     public Update():void {
       this.x = this.stage.mouseX;

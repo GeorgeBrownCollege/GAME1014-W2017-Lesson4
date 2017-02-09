@@ -6,22 +6,34 @@ var __extends = (this && this.__extends) || function (d, b) {
 // MODULE is like a namespace
 var objects;
 (function (objects) {
+    /**
+     * The plane class represents the player's avatar.
+     *
+     * @class Plane
+     */
     var Plane = (function (_super) {
         __extends(Plane, _super);
         // CONSTRUCTOR +++++++++++++++++++++++++=
+        /**
+         * This constructor requires a reference to the stage object
+         *
+         * @constructor
+         * @param {createjs.Stage} stage
+         */
         function Plane(stage) {
-            var _this = _super.call(this, "../../Assets/images/plane.png") || this;
+            var _this = _super.call(this, "../../Assets/images/plane.png", stage) || this;
             _this.stage = stage;
             _this.Start();
             return _this;
         }
+        /**
+         * This method initializes variables and other class objects
+         *
+         * @method Start
+         * @returns {void}
+         */
         Plane.prototype.Start = function () {
-            /*
-                  this.regX = this.getBounds().width * 0.5;
-                  this.regY = this.getBounds().height * 0.5;
-                  */
-            this.regX = 32.5;
-            this.regY = 32.5;
+            this._initialize();
             this.y = 430; // plane's fixed vertical position
         };
         Plane.prototype._checkBounds = function () {
@@ -39,7 +51,7 @@ var objects;
             this._checkBounds();
         };
         return Plane;
-    }(createjs.Bitmap));
+    }(objects.GameObject));
     objects.Plane = Plane;
 })(objects || (objects = {}));
 //# sourceMappingURL=plane.js.map

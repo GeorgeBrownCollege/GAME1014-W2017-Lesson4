@@ -7,8 +7,9 @@ var objects;
 (function (objects) {
     var Cloud = (function (_super) {
         __extends(Cloud, _super);
-        function Cloud() {
-            var _this = _super.call(this, "../../Assets/images/cloud.png") || this;
+        function Cloud(stage) {
+            var _this = _super.call(this, "../../Assets/images/cloud.png", stage) || this;
+            _this.stage = stage;
             _this.Start();
             return _this;
         }
@@ -24,10 +25,7 @@ var objects;
             }
         };
         Cloud.prototype.Start = function () {
-            this.height = 86.5; // this.getBounds().height;
-            this.width = 113; // this.getBounds().width;
-            this.regX = this.width * 0.5;
-            this.regY = this.height * 0.5;
+            this._initialize();
             this._reset();
         };
         Cloud.prototype.Update = function () {
@@ -36,7 +34,7 @@ var objects;
             this._checkBounds();
         };
         return Cloud;
-    }(createjs.Bitmap));
+    }(objects.GameObject));
     objects.Cloud = Cloud;
 })(objects || (objects = {}));
 //# sourceMappingURL=cloud.js.map

@@ -7,8 +7,9 @@ var objects;
 (function (objects) {
     var Island = (function (_super) {
         __extends(Island, _super);
-        function Island() {
-            var _this = _super.call(this, "../../Assets/images/island.png") || this;
+        function Island(stage) {
+            var _this = _super.call(this, "../../Assets/images/island.png", stage) || this;
+            _this.stage = stage;
             _this.Start();
             return _this;
         }
@@ -22,10 +23,7 @@ var objects;
             }
         };
         Island.prototype.Start = function () {
-            this.height = this.getBounds().height;
-            this.width = this.getBounds().width;
-            this.regX = this.width * 0.5;
-            this.regY = this.height * 0.5;
+            this._initialize();
             this.dy = 5; // speed of the ocean
             this._reset();
         };
@@ -34,7 +32,7 @@ var objects;
             this._checkBounds();
         };
         return Island;
-    }(createjs.Bitmap));
+    }(objects.GameObject));
     objects.Island = Island;
 })(objects || (objects = {}));
 //# sourceMappingURL=island.js.map
