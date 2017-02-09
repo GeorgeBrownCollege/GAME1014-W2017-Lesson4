@@ -8,6 +8,7 @@
     var plane;
     var ocean;
     var island;
+    var cloud;
     function Start() {
         // reference to the canvas element on the index.html
         canvas = document.getElementById("canvas");
@@ -25,6 +26,7 @@
         ocean.Update();
         island.Update();
         plane.Update();
+        cloud.Update();
         stage.update();
     }
     function Game() {
@@ -38,6 +40,9 @@
         // add plane to stage
         plane = new objects.Plane(stage);
         stage.addChild(plane);
+        // add cloud to stage
+        cloud = new objects.Cloud();
+        stage.addChild(cloud);
     }
     window.onload = Start;
 })();

@@ -12,6 +12,7 @@
   let plane:objects.Plane;
   let ocean:objects.Ocean;
   let island:objects.Island;
+  let cloud:objects.Cloud;
 
   function Start() {
     // reference to the canvas element on the index.html
@@ -36,6 +37,7 @@
     ocean.Update();
     island.Update();
     plane.Update();
+    cloud.Update();
 
     stage.update();
   }
@@ -55,7 +57,9 @@
   plane = new objects.Plane(stage);
   stage.addChild(plane);
 
-
+  // add cloud to stage
+  cloud = new objects.Cloud();
+  stage.addChild(cloud);
 
 }
 
