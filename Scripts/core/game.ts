@@ -12,7 +12,10 @@
   let plane:objects.Plane;
   let ocean:objects.Ocean;
   let island:objects.Island;
-  let cloud:objects.Cloud;
+  //let cloud:objects.Cloud;
+
+  let cloudCount:number = 3;
+  let clouds:objects.Cloud[]; // cloud array
 
   function Start() {
     // reference to the canvas element on the index.html
@@ -27,6 +30,9 @@
     // call the Update function every frame
     createjs.Ticker.on("tick", Update);
 
+    // instantiate clouds array
+    clouds = new Array<objects.Cloud>();
+
     // Start the game
     Game();
   }
@@ -37,7 +43,11 @@
     ocean.Update();
     island.Update();
     plane.Update();
-    cloud.Update();
+
+    clouds.forEach(cloud => {
+      cloud.Update();
+    });
+
 
     stage.update();
   }
@@ -57,9 +67,13 @@
   plane = new objects.Plane(stage);
   stage.addChild(plane);
 
-  // add cloud to stage
-  cloud = new objects.Cloud();
-  stage.addChild(cloud);
+  // add clouds to stage
+  for(let count:number = 0; count < cloudCount; count++) {
+    clouds[count] = new objects.Cloud();
+    stage.addChild(clouds[count]);
+  }
+
+
 
 }
 

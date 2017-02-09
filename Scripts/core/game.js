@@ -8,7 +8,9 @@
     var plane;
     var ocean;
     var island;
-    var cloud;
+    //let cloud:objects.Cloud;
+    var cloudCount = 3;
+    var clouds; // cloud array
     function Start() {
         // reference to the canvas element on the index.html
         canvas = document.getElementById("canvas");
@@ -18,6 +20,8 @@
         createjs.Ticker.framerate = 60;
         // call the Update function every frame
         createjs.Ticker.on("tick", Update);
+        // instantiate clouds array
+        clouds = new Array();
         // Start the game
         Game();
     }
@@ -26,7 +30,9 @@
         ocean.Update();
         island.Update();
         plane.Update();
-        cloud.Update();
+        clouds.forEach(function (cloud) {
+            cloud.Update();
+        });
         stage.update();
     }
     function Game() {
@@ -40,9 +46,11 @@
         // add plane to stage
         plane = new objects.Plane(stage);
         stage.addChild(plane);
-        // add cloud to stage
-        cloud = new objects.Cloud();
-        stage.addChild(cloud);
+        // add clouds to stage
+        for (var count = 0; count < cloudCount; count++) {
+            clouds[count] = new objects.Cloud();
+            stage.addChild(clouds[count]);
+        }
     }
     window.onload = Start;
 })();
