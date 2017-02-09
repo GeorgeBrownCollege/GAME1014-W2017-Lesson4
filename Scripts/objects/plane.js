@@ -16,8 +16,12 @@ var objects;
             return _this;
         }
         Plane.prototype.Start = function () {
-            this.regX = this.getBounds().width * 0.5;
-            this.regY = this.getBounds().height * 0.5;
+            /*
+                  this.regX = this.getBounds().width * 0.5;
+                  this.regY = this.getBounds().height * 0.5;
+                  */
+            this.regX = 32.5;
+            this.regY = 32.5;
             this.y = 430; // plane's fixed vertical position
         };
         Plane.prototype._checkBounds = function () {
